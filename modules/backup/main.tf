@@ -195,7 +195,7 @@ resource "google_cloud_scheduler_job" "sql_export" {
 }
 
 resource "google_storage_bucket_iam_member" "sql_instance_account" {
-  count  = var.enable_export_backup ? 1 : 0
+  count  = var.enable_export_backup && var.add_permissions_on_bucket_for_export ? 1 : 0
   bucket = split("/", var.export_uri)[2] #Get the name of the bucket out of the URI
   member = "serviceAccount:${data.google_sql_database_instance.backup_instance.service_account_email_address}"
   role   = "roles/storage.objectAdmin"

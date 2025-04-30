@@ -198,3 +198,9 @@ variable "deletion_protection" {
   type        = bool
   default     = true
 }
+
+variable "add_permissions_on_bucket_for_export" {
+  description = "If set to true it will add permissions on bucket for export cloudsql db. If it's not set, those permissions have to be added manually"
+  type        = bool
+  default     = true
+}
